@@ -9,11 +9,15 @@ You need to install
 
 then put you tweet url in to text file
 link this
+
 	https://twitter.com/***/status/***
+	
 	https://twitter.com/***/status/***
+	
 	.
 	.
 	https://twitter.com/***/status/***
+	
 	
 after that change directory path in code to where you store text file and where to store downloaded images
 
