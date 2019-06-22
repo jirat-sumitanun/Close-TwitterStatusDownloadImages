@@ -8,9 +8,9 @@ link_count = 0
 
 def readText():
 	with open("your text file here") as f: #change to your text file
-    		content = f.readlines()
+    		content = f.readlines() #read text file line by line
 	for link in content:
-		openLink(link.rstrip('\n'))
+		openLink(link.rstrip('\n')) #send link to request
 		global link_count
 		link_count += 1
 	f.close()
@@ -19,16 +19,15 @@ def readText():
 def openLink(url_link):
 	global link_count
 	try:
-		url = urllib.request.urlopen(url_link).read()
+		url = urllib.request.urlopen(url_link).read() #open tweet's status
 		soup = BeautifulSoup(url,"lxml")
 		images = []
-		images = soup.findAll("img")
+		images = soup.findAll("img") #get all images in tweet it include images in reply too
 		for img in images:
-			image = str(img.get("src"))
+			image = str(img.get("src")) # filter only images in status and reply
 			if(image.find("media") > 0):
 				#print(image)
 				DLImage(image)
-
 		link_count += 1
 	except:
 		print("404 not found on",url_link)
@@ -36,7 +35,7 @@ def openLink(url_link):
 
 def DLImage(link):
 	global image_count
-	Photo_URL = changeToOrig(link)
+	Photo_URL = changeToOrig(link) #convert images url to original size
 	path = r"Download Path Here" #Change to your path
 	fileName = link[link.find("media/")+6:]
 	destination_path_file = path+fileName
@@ -47,7 +46,7 @@ def DLImage(link):
 		try:
 			if Picture_request.status_code == 200:
 				with open(destination_path_file, 'wb') as f:
-					f.write(Picture_request.content)
+					f.write(Picture_request.content) #download image
 				print("Download:",fileName)
 				image_count += 1
 		except:
