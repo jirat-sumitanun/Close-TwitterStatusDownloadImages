@@ -7,13 +7,16 @@ image_count = 0
 link_count = 0
 
 def readText():
-	with open("your text file here") as f: #change to your text file
-    		content = f.readlines() #read text file line by line
-	for link in content:
-		openLink(link.rstrip('\n')) #send link to request
-		global link_count
-		link_count += 1
-	f.close()
+	try:
+		with open("your text file here") as f: #change to your text file
+			content = f.readlines() #read text file line by line
+		for link in content:
+			openLink(link.rstrip('\n')) #send link to request
+			global link_count
+			link_count += 1
+		f.close()
+	except:
+		print("Bookmark file not found")
 
 
 def openLink(url_link):
