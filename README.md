@@ -1,6 +1,7 @@
 # TwitterStatusDownloadImages
 Download Tweet's Status Images with python by reading text file line by line
-After Twiiter force update user to use new layout, this program is gone.
+
+After Twitter force update user to use new layout, this program is gone.
 
 Before use
 You need to install
